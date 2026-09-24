@@ -1,0 +1,87 @@
+{
+  "entities": {
+    "access_codes": {
+      "title": "Access Codes & Key Tracking",
+      "description": "One-time passkeys bound to browser canvas/hardware ID and candidate email",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Passkey text code e.g. PASS-4921" },
+        "code": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "status": { "type": "string", "enum": ["active", "disabled"] },
+        "keyStatus": { "type": "string", "enum": ["unclaimed", "claimed", "disabled"] },
+        "usedCount": { "type": "number" },
+        "boundHardwareId": { "type": "string", "description": "Canvas & WebGL Hardware Fingerprint" },
+        "boundEmail": { "type": "string", "description": "Candidate email that claimed the key" },
+        "boundUserName": { "type": "string" },
+        "activatedAt": { "type": "number" },
+        "assignedGradeLevel": { "type": "string", "enum": ["07-10", "12-13", "ANY"] },
+        "notes": { "type": "string" },
+        "gpuRenderer": { "type": "string" }
+      },
+      "required": ["id", "code", "createdAt", "status"]
+    },
+    "registered_users": {
+      "title": "Registered Users",
+      "description": "User profiles indexed by email with permanent hardware fingerprint",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "fullName": { "type": "string" },
+        "department": { "type": "string" },
+        "cadre": { "type": "string" },
+        "hardwareId": { "type": "string", "description": "Canvas & WebGL Hardware Fingerprint" },
+        "accessCode": { "type": "string" },
+        "registeredAt": { "type": "number" },
+        "lastActiveAt": { "type": "number" },
+        "totalPracticeSessions": { "type": "number" },
+        "highestScore": { "type": "number" },
+        "gpuRenderer": { "type": "string" }
+      },
+      "required": ["id", "email", "fullName", "hardwareId", "accessCode"]
+    },
+    "practice_sessions": {
+      "title": "Practice Sessions",
+      "description": "Completed CBT practice attempts with scores and security logs",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "candidateEmail": { "type": "string" },
+        "candidateName": { "type": "string" },
+        "gradeLevel": { "type": "string" },
+        "accessCode": { "type": "string" },
+        "hardwareId": { "type": "string" },
+        "score": { "type": "number" },
+        "totalQuestions": { "type": "number" },
+        "percentage": { "type": "number" },
+        "timeSpentSeconds": { "type": "number" },
+        "infractionsCount": { "type": "number" },
+        "completedAt": { "type": "number" }
+      },
+      "required": ["id", "candidateEmail", "score", "totalQuestions", "completedAt"]
+    },
+    "audit_deleted_profiles": {
+      "title": "Audit of Deleted Candidate Profiles",
+      "description": "Immutable compliance audit records preserved when candidates or admins remove user profiles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "candidateEmail": { "type": "string" },
+        "candidateName": { "type": "string" },
+        "department": { "type": "string" },
+        "cadre": { "type": "string" },
+        "hardwareId": { "type": "string" },
+        "accessCode": { "type": "string" },
+        "totalPracticeSessions": { "type": "number" },
+        "highestScore": { "type": "number" },
+        "registeredAt": { "type": "number" },
+        "deletedAt": { "type": "number" },
+        "deletedBy": { "type": "string", "enum": ["candidate_self", "admin"] },
+        "deletionReason": { "type": "string" },
+        "action": { "type": "string" }
+      },
+      "required": ["id", "candidateEmail", "deletedAt", "deletedBy"]
+    }
+  }
+}

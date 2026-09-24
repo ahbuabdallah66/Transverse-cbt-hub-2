@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix Civil Service \u0026 Health CBT Practice Portal",
+  "description": "Independent practice simulator and preparatory testing portal for healthcare and civil service promotional assessments (GL 07-10 \u0026 GL 12-13) with single-device passkey locks and cloud database.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

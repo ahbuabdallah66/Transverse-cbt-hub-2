@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#facc15"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="104" fill="url(#bg)"/>
+  <rect x="24" y="24" width="464" height="464" rx="80" fill="none" stroke="url(#gold)" stroke-width="8" opacity="0.6"/>
+  
+  <!-- CBT Shield / Badge -->
+  <path d="M256 96 L376 148 V276 C376 348 256 416 256 416 C256 416 136 348 136 276 V148 Z" fill="#047857" stroke="url(#gold)" stroke-width="12" stroke-linejoin="round"/>
+  
+  <!-- Open Book -->
+  <path d="M192 230 C220 220 256 230 256 230 C256 230 292 220 320 230 V310 C292 300 256 310 256 310 C256 310 220 300 192 310 Z" fill="#ffffff" stroke="url(#gold)" stroke-width="6"/>
+  <line x1="256" y1="230" x2="256" y2="310" stroke="#064e3b" stroke-width="4"/>
+  
+  <!-- CBT Letters -->
+  <text x="256" y="200" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="44" fill="#facc15" letter-spacing="4">CBT</text>
+  <text x="256" y="360" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="20" fill="#a7f3d0" letter-spacing="2">CIVIL &amp; HEALTH</text>
+</svg>

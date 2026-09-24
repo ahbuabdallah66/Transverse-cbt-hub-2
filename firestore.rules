@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Designated platform administrator check
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email.lower() == 'kryztalcorp@gmail.com';
+    }
+
+    // Access codes collection:
+    match /access_codes/{codeId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Candidate User profiles:
+    // Allows registration, updates, candidate self-deletion and admin deletion
+    match /registered_users/{userId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Practice session scores and logs:
+    match /practice_sessions/{sessionId} {
+      allow read: if true;
+      allow create, update: if true;
+      allow delete: if true;
+    }
+
+    // Compliance Audit Logs for Deleted Profiles (Audit copy preserved):
+    match /audit_deleted_profiles/{auditId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if isAdmin();
+    }
+
+    // Platform settings:
+    match /platform_settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}
